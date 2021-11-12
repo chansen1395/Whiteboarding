@@ -119,6 +119,19 @@ Input: "copyright"
 
 Output: true
 +++++ ANSWER 4 +++++
+function isUnique(string) {
+  let i = 0;
+  let unique = true;
+  while (unique && i < string.length) {
+    for (let j = i + 1; j < string.length; j++) {
+      if (string[j] === string[i]) {
+        unique = false;
+      } 
+    }
+    i++;
+  }
+  return unique;
+}
 
 
 
