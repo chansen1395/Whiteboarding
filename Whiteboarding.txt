@@ -31,6 +31,30 @@ function toURL(string) {
 }
 
 
+const recursiveToURL = (string, newString, counter) => {
+
+  if (counter != string.length && string.length != 0)
+  {
+
+    if (string[counter] === " ") {
+      newString += "%20%";
+    } 
+    
+    else {
+      newString += string[counter];
+    }
+
+    return recursiveToURL(string, newString, counter + 1);
+  }
+
+  else {
+    return newString;
+  }
+}
+
+recursiveToURL("the dog ate a rat", "", 0);
+
+
 
 ***** QUESTION 2 *****
 Question #2: Array Deduping
@@ -66,6 +90,33 @@ function noDupes(array) {
   }
   return uniqueArray;
 }
+
+
+
+const recursiveUnique = (array, newArray, counter) => {
+
+  if (counter != array.length && array.length != 0)
+  {
+    i = 1;
+    while (i < array.length) {
+
+      if (array[counter] != array[i]) {
+        i++;
+      } 
+      
+      else {
+        newArray.push(array[counter]);
+      }
+
+      return recursiveUnique(array, newArray, counter + 1);
+    }
+  }
+  else {
+    return newArray;
+  }
+}
+
+recursiveToURL([t,h,e, ,d,o,g, ,a,t,e, ,a, ,r,a,t], [], 0);
 
 
 ***** QUESTION 3 *****
