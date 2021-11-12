@@ -79,6 +79,28 @@ Input: "aaabccdddda"
 
 Output: "3ab2c4da"
 +++++ ANSWER 3 +++++
+function compress(string) {
+  let newStr = "";
+  let i = 0;
+  while (i < string.length) {
+    let count = 1;
+    for (let j = 0; j < string.length; j++) {
+      if (string[j] === string[j + 1]) {
+        count++;
+      } 
+      else if (count > 1 && string[j] != string[j + 1]) {
+        newStr += count + string[j];
+        count = 1;
+      }
+      else {
+        newStr += string[j];
+        count = 1;
+      }
+    i++;
+    }
+  }
+  return newStr;
+}
 
 
 
