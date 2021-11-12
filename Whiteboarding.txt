@@ -17,8 +17,7 @@ Output: "Jasmine%20Ann%20Jones"
 +++++ ANSWER 1 +++++
 
 function toURL(string) {
-  const arrayLength = string.Length;
-  const URLArray = new Array (arrayLength);
+  const URLArray = new Array (string.length);
   for (let i = 0; i < string.length; i++) {
     if (string[i] === " ") {
       URLArray[i] = "%20%";
@@ -93,11 +92,10 @@ function noDupes(array) {
 
 
 
-const recursiveUnique = (array, newArray, counter) => {
+const recursiveUnique = (array, newArray, i, j) => {
 
-  if (counter != array.length && array.length != 0)
+  if (i != array.length && array.length != 0)
   {
-    i = 1;
     while (i < array.length) {
 
       if (array[counter] != array[i]) {
@@ -108,7 +106,7 @@ const recursiveUnique = (array, newArray, counter) => {
         newArray.push(array[counter]);
       }
 
-      return recursiveUnique(array, newArray, counter + 1);
+      return recursiveUnique(array, newArray, counter + 1, i);
     }
   }
   else {
@@ -116,8 +114,36 @@ const recursiveUnique = (array, newArray, counter) => {
   }
 }
 
-recursiveToURL([t,h,e, ,d,o,g, ,a,t,e, ,a, ,r,a,t], [], 0);
+recursiveUnique(["t","h","e"," ","d","o","g"," ","a","t","e"," ","a"," ","r","a","t"], [], 0, 1);
 
+
+
+const recursiveUnique = (array, newArray, i, j, uniqueCount) => {
+
+  if (i <= array.length && uniqueCount === 1)
+  {
+    if (j <= array.length) {
+
+      if (array[j] === array[i]) {
+        return recursiveUnique(array, newArray, i, j + 1, uniqueCount + 1);
+      }
+
+      else {
+        return recursiveUnique(array, newArray, i, j + 1);
+      }
+
+    } else if (j > array.length) {
+        j = i + 2;
+        return recursiveUnique(array, newArray, i + 1, j, 1);
+    }
+  }
+
+  else {
+    return newArray;
+  }
+}
+
+recursiveUnique("ratatat", true, 0, 1);
 
 ***** QUESTION 3 *****
 Question #3: Compressing Strings
@@ -183,6 +209,33 @@ function isUnique(string) {
   }
   return unique;
 }
+
+const recursiveUnique = (string, isUnique, i, j) => {
+
+  if (i <= string.length && isUnique === true)
+  {
+    if (j <= string.length) {
+
+      if (string[j] === string[i]) {
+        return false;
+      }
+
+      else {
+        return recursiveUnique(string, isUnique, i, j + 1);
+      }
+
+    } else if (j > string.length) {
+        j = i + 2;
+        return recursiveUnique(string, isUnique, i + 1, j);
+    }
+  }
+
+  else {
+    return isUnique;
+  }
+}
+
+recursiveUnique("ratatat", true, 0, 1);
 
 
 
