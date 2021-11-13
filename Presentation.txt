@@ -1,0 +1,46 @@
+output: [7, 9, "hi", 12, 53]
+
+.includes
+.filter
+.sort
+--> loop check adjacent elements
+push unique elements to new array
+
+base case, termination
+hi hi 7 9
+
+function noDupes(arr) {
+
+//declare & Sort
+let sortArr = arr.sort();
+let uniqueEl = [];
+
+// iterate thru sorted, only push non-adjacent
+for (let i = 0; i < sortArr.length; i++) {
+	// 
+	if (sortArr[i] != sortArr[i + 1]) {
+		uniqueEl.push(sortArr[i];
+	}
+
+	}
+	return uniqueEl;
+}
+
+
+
+const recursiveDupes = (arr, uniqueArray, counter) => {
+//declare & Sort
+let sortedArr = arr.sort();
+
+if (sortedArr[counter] != sortedArr[counter + 1]) {
+	// 
+	uniqueArray.push(sortedArr[counter]);
+	counter++;
+	recursiveDupes(sortedArr, uniqueArray, counter);
+	}
+
+return uniqueArray;
+}
+
+
+recursiveDupes(arr, uniqueArray [], 0);
